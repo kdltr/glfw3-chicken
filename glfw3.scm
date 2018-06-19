@@ -37,8 +37,12 @@
                window-should-close?
                )
 
-(import chicken scheme foreign)
-(use data-structures (prefix glfw3-bindings %))
+(import scheme
+        (chicken base)
+        (chicken foreign)
+        (chicken module)
+        (chicken keyword)
+        (prefix glfw3-bindings %))
 
 (reexport (except glfw3-bindings
                   init
@@ -196,7 +200,7 @@
 ;; Error callback in C, rather than Scheme so not all GLFW foreign-lambdas
 ;; need to be safe
 (foreign-declare
-"#include \"glfw3.h\"
+"#include <GLFW/glfw3.h>
 void errorCallback(int error, const char* description){
      fprintf(stderr, \"GLFW error: %s\\n\", description);
 }")

@@ -1,7 +1,6 @@
 (module glfw3-bindings *
 
-(import chicken scheme foreign)
-(use bind)
+(import (chicken base) scheme (chicken foreign) bind)
 
 (bind-rename/pattern "^GLFW_([A-Z].+)$" "+\\1+")
 (bind-rename/pattern "(.*)GLFW(.+)$" "\\1\\2")
