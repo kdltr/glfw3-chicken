@@ -229,7 +229,7 @@ void errorCallback(int error, const char* description){
       (aux-buffers: ,+aux-buffers+)
       (samples: ,+samples+)
       (refresh-rate: ,+refresh-rate+)
-      (sterio: ,+stereo+ bool:)
+      (stereo: ,+stereo+ bool:)
       (srgb-capable: ,+srgb-capable+ bool:)
       (client-api: ,+client-api+)
       (context-version-major: ,+context-version-major+)
