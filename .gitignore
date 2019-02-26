@@ -1,7 +1,0 @@
-*#
-*.import.scm
-*.so
-*.c
-*.o
-README.svnwiki
-example
