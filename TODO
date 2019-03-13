@@ -1,0 +1,2 @@
+- Add the new callbacks from 3.2
+- Use pkg-config for linking
