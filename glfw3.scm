@@ -15,7 +15,9 @@
                scroll-callback
                key-callback
                char-callback
+               char-mods-callback
                monitor-callback
+               joystick-callback
                set-window-position-callback!
                set-window-size-callback!
                set-window-close-callback!
@@ -28,7 +30,9 @@
                set-scroll-callback!
                set-key-callback!
                set-char-callback!
+               set-char-mods-callback!
                set-monitor-callback!
+               set-joystick-callback!
                get-monitor-position
                get-window-position
                get-cursor-position
@@ -76,7 +80,10 @@
 (define scroll-callback (make-parameter (lambda (window x y) #f)))
 (define key-callback (make-parameter (lambda (window key scancode action mods) #f)))
 (define char-callback (make-parameter (lambda (window char) #f)))
+(define char-mods-callback (make-parameter (lambda (window char mods) #f)))
 (define monitor-callback (make-parameter (lambda (monitor event) #f)))
+(define joystick-callback (make-parameter (lambda (joystick event) #f)))
+
 
 (define-external (glfw3WindowPositionCallback (c-pointer window) (int x) (int y))
     void
@@ -134,12 +141,25 @@
     void
   ((char-callback) window char))
 
+(define-external (glfw3CharModsCallback (c-pointer window) (unsigned-int char) (int mods))
+    void
+  ((char-mods-callback) window char mods))
+
+;; TODO Drop Callback (convert c-string array to list of strings)
+
 (define-external (glfw3MonitorCallback (c-pointer window) (int event))
     void
   ((monitor-callback) window event))
 
+(define-external (glfw3JoystickCallback (int joystick) (int event))
+    void
+  ((joystick-callback) joystick event))
+
 (define (set-monitor-callback! #!optional callback)
   (%set-monitor-callback (or callback #$glfw3MonitorCallback)))
+
+(define (set-joystick-callback! #!optional callback)
+  (%set-joystick-callback (or callback #$glfw3JoystickCallback)))
 
 (define (set-window-position-callback! #!optional win callback)
   (%set-window-pos-callback (or win (window))
@@ -188,6 +208,10 @@
 (define (set-char-callback! #!optional win callback)
   (%set-char-callback (or win (window))
                       (or callback #$glfw3CharCallback)))
+
+(define (set-char-mods-callback! #!optional win callback)
+  (%set-char-mods-callback (or win (window))
+                           (or callback #$glfw3CharModsCallback)))
 
 ;;; Aliases
 (define set-window-position %set-window-pos)

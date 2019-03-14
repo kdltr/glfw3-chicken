@@ -1,1 +1,2 @@
-- Add the new callbacks from 3.2
+- Add “drop” callback support
+- Port to windows
