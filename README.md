@@ -197,7 +197,7 @@ Returns two values: a pointer to an array of bytes representing the state of all
 
 ## Example
 ``` Scheme
-(use (prefix glfw3 glfw:))
+(import (prefix glfw3 glfw:))
 
 (glfw:key-callback (lambda (window key scancode action mods)
                      (cond
