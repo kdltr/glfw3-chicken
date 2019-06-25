@@ -1,3 +1,4 @@
 (repo git "git://upyum.com/glfw3-chicken")
 (uri targz "https://www.upyum.com/cgit.cgi/glfw3-chicken/snapshot/glfw3-chicken-{egg-release}.tar.gz")
+(release "0.7.1")
 (release "0.7.0")
