@@ -1,0 +1,7 @@
+*.build.sh
+*.install.sh
+*.import.scm
+*.link
+*.so
+*.static.o
+*.wiki
