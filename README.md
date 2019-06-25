@@ -74,6 +74,10 @@ Called when a window is resized. Expects a function with the signature `(lambda 
 
 Called when a window is closed. Expects a function with the signature `(lambda (WINDOW) ...)`. `WINDOW` is the window that was closed.
 
+    [parameter] window-refresh-callback
+
+Called when a window’s content is damaged and needs to be refreshed. Expects a function with the signature `(lambda (WINDOW) ...)`. `WINDOW` is the window that needs refreshing.
+
     [parameter] window-focus-callback
 
 Called when a window comes into or goes out of focus. Expects a function with the signature `(lambda (WINDOW FOCUSED?) ...)`. `WINDOW` is the affected window, while `FOCUSED?` is true when the window has been focused and false otherwise.
@@ -125,6 +129,7 @@ Called when a joystick is plugged-in or plugged-out. Expects a function with the
     [procedure] (set-window-position-callback! [WINDOW [CALLBACK]])
     [procedure] (set-window-size-callback! [WINDOW [CALLBACK]])
     [procedure] (set-window-close-callback! [WINDOW [CALLBACK]])
+    [procedure] (set-window-refresh-callback! [WINDOW [CALLBACK]])
     [procedure] (set-window-focus-callback! [WINDOW [CALLBACK]])
     [procedure] (set-window-iconify-callback! [WINDOW [CALLBACK]])
     [procedure] (set-framebuffer-size-callback! [WINDOW [CALLBACK]])
@@ -213,6 +218,11 @@ Returns two values: a pointer to an array of bytes representing the state of all
 ```
 
 ## Version history
+### Version 0.7.1
+25 June 2019
+
+* Add the missing window refresh callback
+
 ### Version 0.7.0
 15 March 2019
 

@@ -6,6 +6,7 @@
                window-position-callback
                window-size-callback
                window-close-callback
+               window-refresh-callback
                window-focus-callback
                window-iconify-callback
                framebuffer-size-callback
@@ -21,6 +22,7 @@
                set-window-position-callback!
                set-window-size-callback!
                set-window-close-callback!
+               set-window-refresh-callback!
                set-window-focus-callback!
                set-window-iconify-callback!
                set-framebuffer-size-callback!
@@ -55,6 +57,7 @@
                   set-window-pos-callback
                   set-window-size-callback
                   set-window-close-callback
+                  set-window-refresh-callback
                   set-window-focus-callback
                   set-window-iconify-callback
                   set-framebuffer-size-callback
@@ -173,6 +176,10 @@
   (%set-window-close-callback (or win (window))
                               (or callback #$glfw3WindowCloseCallback)))
 
+(define (set-window-refresh-callback! #!optional win callback)
+  (%set-window-refresh-callback (or win (window))
+                                (or callback #$glfw3WindowRefreshCallback)))
+
 (define (set-window-focus-callback! #!optional win callback)
   (%set-window-focus-callback (or win (window))
                               (or callback #$glfw3WindowFocusCallback)))
@@ -282,6 +289,7 @@ void errorCallback(int error, const char* description){
   (set-monitor-callback!)
   (set-window-position-callback!)
   (set-window-size-callback!)
+  (set-window-refresh-callback!)
   (set-window-close-callback!)
   (set-window-focus-callback!)
   (set-window-iconify-callback!)

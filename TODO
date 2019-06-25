@@ -1,2 +1,4 @@
 - Add “drop” callback support
 - Port to windows
+- Add glfw3native bindings
+- Macro for callbacks (deduplicate code)
